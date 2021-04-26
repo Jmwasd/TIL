@@ -2,14 +2,14 @@
 <summary> 😎 4/22 Today I Learn
 </summary>
 <div markdown="1">       
+<hr/>
 
-오늘 학습 내용
+## 오늘 학습 내용
 
 - nodejs vs spring boot
 - 독서 - 소프트 스킬
 - 프로그래머스 mysql-level 4 => 1문제
 - 타입스크립트 - 함수
-
 
 ## 프레임 워크 vs 라이브 러리
 내가 코드를 컨트롤 => 라이브러리 ex ) jQuery
@@ -84,9 +84,11 @@ https://velog.io/@aksdb9865
 <details>
 <summary> 😎 4/26 Today I Learn
 </summary>
-<div markdown="1">       
+<div markdown="1"> 
 
-오늘 학습 내용
+<hr />
+
+## 오늘 학습 내용
 - 타입스크립트 - 리터럴 타입 / 유니언과 교차 타입
 - this
 - React hooks(벨로퍼트 리액트 입문 17장 까지)
