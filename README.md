@@ -150,6 +150,8 @@ function Person(name){
 let me =new Person("jang");
 console.log(me) // Person {name : "jang"}
 ```
+### 원본
+https://velog.io/@aksdb9865
 
 
 </div>
