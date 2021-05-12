@@ -1,35 +1,45 @@
-import React from "react";
-import UserList from "./UserList";
+import React, { memo, useContext, useRef } from "react";
+import { UserDispatch } from "./App";
 
-function CreateUser({
-  email,
-  nickname,
-  onChange,
-  onClick,
-  users,
-  deleteUser,
-  nameInput,
-  onToggle,
-}) {
+function CreateUser({ inputs }) {
+  const { name, email } = inputs;
+  const dispatch = useContext(UserDispatch);
+  const nextId = useRef(4);
+  const nameInput = useRef();
   return (
     <>
       <input
         name="email"
         placeholder="email"
-        onChange={onChange}
+        onChange={(e) => {
+          const { name, value } = e.target;
+          dispatch({ type: "CHANGE_INPUT", name, value });
+        }}
         value={email}
         ref={nameInput}
       />
       <input
         name="name"
         placeholder="nickname"
-        onChange={onChange}
-        value={nickname}
+        onChange={(e) => {
+          const { name, value } = e.target;
+          dispatch({ type: "CHANGE_INPUT", name, value });
+        }}
+        value={name}
       />
-      <button onClick={onClick}>등록 버튼</button>
-      <UserList users={users} deleteUser={deleteUser} onToggle={onToggle} />
+      <button
+        onClick={() => {
+          const newUser = Object.assign({ id: nextId.current++ }, inputs, {
+            active: false,
+          });
+          dispatch({ type: "CREATE_INPUT", newUser });
+          nameInput.current.focus();
+        }}
+      >
+        등록 버튼
+      </button>
     </>
   );
 }
 
-export default CreateUser;
+export default memo(CreateUser);

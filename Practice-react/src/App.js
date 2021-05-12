@@ -1,86 +1,104 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useReducer, createContext } from "react";
 import CreateUser from "./CreateUser";
+import UserList from "./UserList";
+
+function activeUsers(users) {
+  let count = 0;
+  users.map((user) => {
+    if (user.active) {
+      count++;
+    }
+  });
+  return count;
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "CHANGE_INPUT":
+      return {
+        ...state,
+        inputs: {
+          ...state.inputs,
+          [action.name]: action.value,
+        },
+      };
+    case "CREATE_INPUT":
+      return {
+        inputs: {
+          name: "",
+          email: "",
+        },
+        users: state.users.concat(action.newUser),
+      };
+    case "REMOVE_INPUT":
+      console.log("real", action.idx);
+      return {
+        ...state,
+        users: state.users.filter((user) => user.id !== action.idx),
+      };
+
+    case "TOGGLE_INPUT":
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          if (user.id === action.id) {
+            return {
+              ...user,
+              active: !user.active,
+            };
+          } else {
+            return user;
+          }
+        }),
+      };
+
+    default:
+      return state;
+  }
+}
+
+export const UserDispatch = createContext(null);
 
 function App() {
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      name: "jang min woo",
-      email: "dktkqyd99@gmail.com",
-      active: true,
-    },
-    {
-      id: 2,
-      name: "min woo jang",
-      email: "aksdb9865@naver.com",
-      active: false,
-    },
-    {
-      id: 3,
-      name: "woo min jang",
-      email: "jjangmw@nate.com",
-      active: false,
-    },
-  ]);
-
-  const [input, setInput] = useState({
-    name: "",
-    email: "",
-  });
-
-  const nameInput = useRef();
-
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setInput({
-      ...input,
-      [name]: value,
-    });
-  };
-
-  const onClick = () => {
-    const createUser = Object.assign({ id: nextId.current++ }, input, {
-      active: false,
-    });
-    setUsers(users.concat(createUser));
-    setInput({
+  const [state, dispatch] = useReducer(reducer, {
+    inputs: {
       name: "",
       email: "",
-    });
-    console.log(input);
-    nameInput.current.focus();
-  };
+    },
+    users: [
+      {
+        id: 1,
+        name: "jang min woo",
+        email: "dktkqyd99@gmail.com",
+        active: true,
+      },
+      {
+        id: 2,
+        name: "min woo jang",
+        email: "aksdb9865@naver.com",
+        active: false,
+      },
+      {
+        id: 3,
+        name: "woo min jang",
+        email: "jjangmw@nate.com",
+        active: false,
+      },
+    ],
+  });
 
-  const nextId = useRef(4);
+  const { inputs, users } = state;
 
-  const deleteUser = (e) => {
-    setUsers(
-      users.filter((user) => {
-        return user.id !== e;
-      })
-    );
-  };
-
-  const onToggle = (id) => {
-    setUsers(
-      users.map((user) => {
-        if (user.id === id) {
-          return { ...user, active: !user.active };
-        }
-        return user;
-      })
-    );
-  };
+  const count = useMemo(() => {
+    return activeUsers(users);
+  }, [users]);
 
   return (
-    <CreateUser
-      users={users}
-      onChange={onChange}
-      onClick={onClick}
-      deleteUser={deleteUser}
-      onToggle={onToggle}
-      nameInput={nameInput}
-    />
+    <UserDispatch.Provider value={dispatch}>
+      <CreateUser users={users} inputs={inputs} />
+      <UserList users={users} />
+      <div>활성사용자 수 : {count} </div>
+    </UserDispatch.Provider>
   );
 }
 

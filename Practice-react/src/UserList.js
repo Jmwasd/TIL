@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import Users from "./User";
 
-function UserList({ users, deleteUser, onToggle }) {
+function UserList({ users }) {
   return (
     <>
       {users.map((user) => {
-        return (
-          <Users
-            user={user}
-            deleteUser={deleteUser}
-            onToggle={onToggle}
-            key={user.id}
-          />
-        );
+        return <Users user={user} key={user.id} />;
       })}
     </>
   );
 }
 
-export default UserList;
+export default memo(UserList);
