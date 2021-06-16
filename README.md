@@ -164,8 +164,7 @@ https://velog.io/@aksdb9865
 
 <hr />
 
-## 오늘 학습 내용
-- form 태그 
+# form tag
 
 ## label element의 중요성
 
@@ -180,7 +179,7 @@ https://velog.io/@aksdb9865
 4. autocomplete : on으로 값을 할당하면 자동완성기능 활성화 off 는 비활성화
 5. novalidate :  유효성 검사를 여부를 확인해주는 속성 값은 boolean으로 할당 시켜준다
 
-## form 태그 안에 사용할 수 있는 element 종류
+## form tag 안에 사용할 수 있는 element 종류
 ```javascript
 <input>
 <label>
