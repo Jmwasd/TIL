@@ -157,3 +157,50 @@ https://velog.io/@aksdb9865
 </div>
 </details>
 
+<details>
+<summary> 😎 21/6/16 Today I Learn
+</summary>
+<div markdown="1"> 
+
+<hr />
+
+## 오늘 학습 내용
+- form 태그 
+
+## label element의 중요성
+
+1. 사용자가 input tag에 값을 입력하기 위해 집중할 때 화면 판독기가 해당 input tag의 라벨을 소리내어 읽어준다.
+2. checkbox/radio button은 종종 너무 작아 클릭하기 어려울 때가 종종 발생하는데 label element로 label을 클릭했을 때도 checkbox/radio button이 toggle되게 도와준다.
+3. label tag의 for속성은 반드시 input tag와의 id 속성과 일치해야 함께 바인딩 된다.
+
+## Form tag의 submit속성
+1. action : Method속성 에따라 방식이 다르지만 method속성이 없다면 action값에 적힌 url로 이동되고 파라미터에 input data가 나타난다. (기본값은 method=“get”)
+2. target : target속성이 없다면 해당 페이지에서 페이지 전환이 이루어지고 _blank로 값을 준다면 새로운 탭으로 이동하게 된다. 더 자세하게 학습해야 된다면 [여기](https://www.w3schools.com/html/html_forms_attributes.asp)를 클릭해 보자
+3. method : get 방식은 action에서 설명한 것과 동일하게 동작하고 추가적으로 method는 말 그대로 HTTP method를 지정할 수 있다. data를 어떤 형태로 보내줄것인지를 결정하고자 할 때 사용한다. Post 방식을 사용하면 console network 탭에서 입력한 값을 확인할 수 있다.
+4. autocomplete : on으로 값을 할당하면 자동완성기능 활성화 off 는 비활성화
+5. novalidate :  유효성 검사를 여부를 확인해주는 속성 값은 boolean으로 할당 시켜준다
+
+## form 태그 안에 사용할 수 있는 element 종류
+```javascript
+<input>
+<label>
+<select>
+<textarea>
+<button>
+<fieldset>
+<legend>
+<datalist>
+<output>
+<option>
+<optgroup>
+
+```
+
+## 참고자료
+	
+https://www.w3schools.com/html/html_forms.asp<br/>
+https://www.w3schools.com/html/html_forms_attributes.asp<br/>
+https://www.w3schools.com/html/html_form_elements.asp<br/>
+https://www.nextree.co.kr/p8428/<br/>
+</div>
+</details>
