@@ -203,3 +203,65 @@ https://www.w3schools.com/html/html_form_elements.asp<br/>
 https://www.nextree.co.kr/p8428/<br/>
 </div>
 </details>
+
+	
+	
+<details>
+<summary> 😎 21/6/17 6월안에 네트워크 숟가락 들기 (TCP/IP)
+</summary>
+<div markdown="1"> 
+
+<hr />
+
+# TCP/IP
+
+TCP/IP는 두 개의 프로토콜로 이루어져 있다
+
+IP(인터넷 프로토콜) : 복잡한 네트워크의 작은 조각들을 빨리 보내는 역할
+
+네트워크를 작은 조각으로 나눠 보내는 이유 : 어떤 패킷을 보낼 때 중간에 연결이 끊어지게 된다면 다시 연결해야 되기 때문에 효율적인 방법이 아니다.
+
+TCP(전송 제어 프로토콜) : 패킷을 잘게 잘라 보내게 되면 순서가 맞지 않거나 중간에 빠질 가능성이 있기 때문에 다시 요청하는 역할을 해준다.
+
+## TCP의 작동 방식
+
+- 3-way handshake 방식으로 송신자와 수신자를 연결시켜 통신을 시작하고
+- 4-way handshake 방식으로 통신을 종료
+
+SYN : 연결 요청 플래그
+ACK : 보낸 패킷에 대한 성공 여부를 판단해서 응답
+
+플래그 : 프로그래밍 언어 용어로서, 특정 동작을 수행할지 말지 결정하는 (보통 1비트인) 변수
+	
+출처 : https://namu.wiki/w/%ED%94%8C%EB%9E%98%EA%B7%B8
+
+
+- 3-way handshake : 연결 초기화
+    - 클라이언트가 서버에게 ‘STN’을 보내 통신 여부 확인
+    - 클라이언트는 ‘SYN/ACK’를 서버에게 보내 통신할 준비가 되었음을 알림
+    - 클라이언트는 ‘ACK’를 보내 전송을 시작함을 알림 이후 데이터를 주고 받을 수 있게된다.
+- 4 way handshake : 연결 종료
+    - 클라이언트가 서버에게 연결 종료하겠다는 FIN플래그 전송
+    - 서버 FIN플래그를 받고 클라이언트에게 ACK를 보내 통신이 끝날 때까지 대기
+    - 통신이 모두 끝나면 서버는 클라이언트에게 FIN플래그를 전송
+    - 클라이언트는 통신 종료가 되었다는 ACK를 서버에게 전송
+
+## TCP 특징
+	
+- 흐름 제어 : TCP Header 내의 window size를 사용해 데이터의 양을 결정
+- 혼잡 제어 : 클라이어트와 서버 사이 경로들의 혼잡도를 확인해서 현재 네트워크에 가장 적합한 데이터량을 확인
+
+## 정리
+- TCP/IP는 하나의 프로토콜 아닌 두 개의 프로토콜을 합쳐 부르는 용어.
+- IP주소를 사용하여 패킷 전달
+- TCP로 패킷 값을 확인(순서 확인, 빠진 부분 확인 등)
+
+
+## 참고자료
+	
+https://mindgear.tistory.com/206<br/>
+https://aws-hyoh.tistory.com/entry/TCPIP-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0<br/>
+https://brunch.co.kr/@wangho/12<br/>
+https://bangu4.tistory.com/74<br/>
+</div>
+</details>
