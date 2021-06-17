@@ -222,18 +222,16 @@ IP(인터넷 프로토콜) : 복잡한 네트워크의 작은 조각들을 빨�
 네트워크를 작은 조각으로 나눠 보내는 이유 : 어떤 패킷을 보낼 때 중간에 연결이 끊어지게 된다면 다시 연결해야 되기 때문에 효율적인 방법이 아니다.
 
 TCP(전송 제어 프로토콜) : 패킷을 잘게 잘라 보내게 되면 순서가 맞지 않거나 중간에 빠질 가능성이 있기 때문에 다시 요청하는 역할을 해준다.
-
-## TCP의 작동 방식
-
-- 3-way handshake 방식으로 송신자와 수신자를 연결시켜 통신을 시작하고
-- 4-way handshake 방식으로 통신을 종료
-
-SYN : 연결 요청 플래그
-ACK : 보낸 패킷에 대한 성공 여부를 판단해서 응답
-
+	
+### 용어
+SYN : 연결 요청 플래그<br/>
+ACK : 보낸 패킷에 대한 성공 여부를 판단해서 응답<br/>
 플래그 : 프로그래밍 언어 용어로서, 특정 동작을 수행할지 말지 결정하는 (보통 1비트인) 변수
 	
-출처 : https://namu.wiki/w/%ED%94%8C%EB%9E%98%EA%B7%B8
+## TCP의 작동 방식
+
+ <strong>3-way handshake</strong> 방식으로 송신자와 수신자를 연결시켜 통신을 시작하고
+ <strong>4-way handshake</strong> 방식으로 통신을 종료
 
 
 - 3-way handshake : 연결 초기화
@@ -263,5 +261,6 @@ https://mindgear.tistory.com/206<br/>
 https://aws-hyoh.tistory.com/entry/TCPIP-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0<br/>
 https://brunch.co.kr/@wangho/12<br/>
 https://bangu4.tistory.com/74<br/>
+https://namu.wiki/w/%ED%94%8C%EB%9E%98%EA%B7%B8
 </div>
 </details>
