@@ -1,6 +1,6 @@
 import React, { useMemo, useReducer, createContext } from "react";
 import CreateUser from "./CreateUser";
-import UserList from "./UserList";
+import UserList from "../UserList";
 
 function activeUsers(users) {
   let count = 0;

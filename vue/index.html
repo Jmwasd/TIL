@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Hello!! {{userName}} </h1>
+            <button @click="fetchTodos">fetchTodos</button>
+            <ul>
+                <li v-for="(todo,index) in todos">{{todo.completed}}
+                    <button @click="completeTodo(index)">완료</button>
+                </li>
+            </ul>
+            <h2 :class="{many : completedTodos > 5}">
+                완료된 Todo는 총 : {{ completedTodos}}개 입니다
+            </h2>
+        </div>
+        <script>
+            const app = new Vue({
+                el : "#app",
+                data : {
+                    userName : "",
+                    frameworks : ['react','vue','angular'],
+                    todos : []
+                },
+                computed :{
+                    completedTodos(){
+                        return this.todos.filter(todo=>todo.completed).length
+                    }
+                },
+                methods : {
+                    addItem(){
+                        this.todos.push(this.userName)
+                        this.userName='';
+                    },
+                    removeItem(){
+                        this.frameworks.pop();
+                    },
+                    fetchTodos(){
+                        fetch("https://jsonplaceholder.typicode.com/todos?_start=0&_end=10")
+                        .then(res=>res.json())
+                        .then(data=>this.todos=data)
+                    },
+                    completeTodo(index){
+                        this.todos[index].completed = !this.todos[index].completed
+                    }
+                }
+            });
+        </script>
+        <style>
+            .many{
+                color : red;
+            }
+        </style>
+    </body>
+</html>

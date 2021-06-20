@@ -135,7 +135,7 @@ class LinkedList {
 
 // rl.on("line", (answer) => {
 //   console.log(
-//     "1. 값 추가 : insert, 2. 값 삭제 : delete, 3. 특정 노드 조회 : getNodeAt, 4. 모든 노드 조회 : getAll, 5. 프로그램 종료 : exist"
+//     "1. 값 추가 : insert, 2. 값 삭제 : delete, 3. 특정 노드 조회 : getNodeAt, 4. 모든 노드 조회 : getAll, 5. 프로그램 종료 : exist "
 //   );
 //   if (answer === "1") {
 
