@@ -254,7 +254,6 @@ ACK : 보낸 패킷에 대한 성공 여부를 판단해서 응답<br/>
 - IP주소를 사용하여 패킷 전달
 - TCP로 패킷 값을 확인(순서 확인, 빠진 부분 확인 등)
 
-
 ## 참고자료
 	
 https://mindgear.tistory.com/206<br/>
@@ -262,5 +261,82 @@ https://aws-hyoh.tistory.com/entry/TCPIP-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%E
 https://brunch.co.kr/@wangho/12<br/>
 https://bangu4.tistory.com/74<br/>
 https://namu.wiki/w/%ED%94%8C%EB%9E%98%EA%B7%B8
+</div>
+</details>
+	
+<details>
+<summary> 😎 21/6/21 6월안에 네트워크 숟가락 들기 (OSI 7 Layer)
+</summary>
+<div markdown="1"> 
+
+# intro
+	
+만약 이 글을 보신다면 읽지마시고 아래 참고 자료에있는 유튜브를 시청보시는걸 100배 1000배 추천합니다.
+	
+	
+# 1계층-물리계층(Physical layer)
+
+0과 1의 나열을 아날로그 신호로 바꾸어 전선으로 흘려 보내고(encoding),
+아날로그 신호가 들어오면 0과 1의 나열로 해석하여(decoding) 물리적으로 연결된 두 대의 컴퓨터가 0과 1의 나열을 주고받을 수 있게 해주는 모듈(module)
+주로 하드웨어적으로 구현
+![0101_0101](https://user-images.githubusercontent.com/66477332/122772841-bf5e4400-d2e2-11eb-9b0a-abff6524b598.png)
+
+# 2계층(Data Link layer)
+
+같은 네트워크에 있는(스위치 하나로 연결 되어 있는 것들) 여러 대의 컴퓨터들이 데이터를 주고받기 위해서 필요한 모듈
+
+Framing 은 Data-link layer 에 속하는 작업들 중 하나이다.
+
+Framing : 원본 데이터값들을 다른 데이터와 구분짓게 해주는 일종의 구분자 역할을 하는 프레임
+
+예를들어 컴퓨터1 , 컴퓨터2 가 컴퓨터 3에게 각자 1101, 1001데이터를 동시에 보낼 때 컴퓨터 3은
+
+11011001과 같이 데이터가 들어온다면 누구의 데이터인지 알 수 없기 때문에 Framing을 통해 어디서 온 데이터인지 알 수 있다.
+
+Ex)
+
+1111 : 시작, 0000 :끝
+
+1111`1101`00001111`1001`0000
+![_2021-05-03__7 46 54](https://user-images.githubusercontent.com/66477332/122773090-fe8c9500-d2e2-11eb-8740-3f6bb0f7492c.png)<br/>
+1계층 + 2계층<br/>
+
+![1111_(data_0000](https://user-images.githubusercontent.com/66477332/122773221-1fed8100-d2e3-11eb-9d8b-199d46a57ea1.png)<br />
+주로 하드웨어적으로 구현
+# 3계층(Network layer) 
+수많은 네트워크들의 연결로 이루어지는 inter-network속에서 어딘가에 있는 목적지 컴퓨터로 데이터를 전송하기 위해, IP주소를 이용해서 길을 찾고(routing) 자신 다음의 라우터에게 데이터를 넘겨주는 것(forwarding : 마 - > 바)
+
+주로 운영체제의 커널에 소프트웨어적으로 구현되어 있다.
+
+![55 10 54 75](https://user-images.githubusercontent.com/66477332/122773713-8a062600-d2e3-11eb-9eb5-006dad078aa1.png)
+
+1 계층 + 2 계층 + 3 계층
+![1115_decoder](https://user-images.githubusercontent.com/66477332/122773752-90949d80-d2e3-11eb-9765-be4a19679706.png)
+
+	
+# 4계층(Transport layer)
+Port 번호를 사용하여 도착지 컴퓨터의 최종 목적지인 프로세스에 까지 데이터가 도달하게 하는 모듈
+Port 번호 : 하나의 컴퓨터에서 동시에 실행되고 있는 프로세스들이 서로 겹치지 않게 가져야하는 정수 값
+
+![Transport_Layer](https://user-images.githubusercontent.com/66477332/122773982-c5a0f000-d2e3-11eb-9c77-09206abaf2e9.png)<br/>
+1-2 계층 + 3 계층 + 4 계층<br/>
+![_2021-05-03__8 11 58](https://user-images.githubusercontent.com/66477332/122774000-c9347700-d2e3-11eb-9987-955f96d0ad28.png)<br />
+	
+오늘날 OSI 모델보다 TCP/IP업그레이드 모델이 더 많이 사용되기 때문에 5,6계층은 따로 설명 x<br/>
+![TCPP_Model](https://user-images.githubusercontent.com/66477332/122774436-23cdd300-d2e4-11eb-8aec-6006a1fb6f58.png)<br/>
+	
+	
+# 7계층 (Application layer)
+TCP/IP 소켓 프로그래밍 - 운영체제의 Transport layer에서 제공하는 API를 활용해서 통신 가능한 프로그램을 만드는 것을 TCP/IP 소켓 프로그래밍 또는 네트워크 프로그래밍 이라고 한다.
+
+소켓 프로그래밍 만으로도 클라이언트, 서버 프로그램을 따로따로 만들어서 동작 시킬 수 있다.
+
+뿐만 아니라, TCP/IP 소켓 프로그래밍을 통해서 누구나 자신만의 Application layer 인코더와 디코더를 만들 수 있다.
+
+즉, 누구든 자신만의 Application layer 프로토콜을 만들어서 사용할 수 있다는 뜻이다.<br />
+![HTTP_encoder](https://user-images.githubusercontent.com/66477332/122774543-3ba55700-d2e4-11eb-8b47-b53aec3fc58d.png)
+
+## 참고자료
+https://www.youtube.com/watch?v=1pfTxp25MA8
 </div>
 </details>
