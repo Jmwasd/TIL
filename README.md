@@ -394,3 +394,15 @@ https://jhnyang.tistory.com/404 <br/>
 
 </div>
 </details>
+<details>
+<summary> 😎 21/6/23
+ 6월안에 네트워크 숟가락 들기 (인터넷 구성도)
+</summary>
+<div markdown="1"> 
+
+# 인터넷 구성도
+
+![Group 3](https://user-images.githubusercontent.com/66477332/123125103-316d8f00-d483-11eb-860a-8d5dce71a21d.png)
+	
+</div>
+</details>
